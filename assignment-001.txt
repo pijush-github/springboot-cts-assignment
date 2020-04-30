@@ -1,0 +1,9 @@
+Implement CRUD operation with one to many relationship between locality and water tanks. Each locality can have multiple water tanks.
+
+Create RestController, Services, DAO and Repository Classes! Work with entities only in DAO class. Rest controllers must not work with entities.
+
+ 
+
+Locality -> street name, locality, city
+
+Water Tanks -> locality_id, capacity (ltr), last cleaned (date)

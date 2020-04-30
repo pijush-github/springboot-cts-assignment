@@ -1,0 +1,11 @@
+Implement CRUD operation with many to many relationship between student and course.
+
+One student may subscribe to multiple courses.
+
+One course may have multiple students as learners.
+
+Create RestController, Services, DAO and Repository Classes! Work with entities only in DAO class. Rest controllers must not work with entities.
+
+Template code with pre-configured entities (StudentEntity and CourseEntity) is given at below URL:
+
+https://github.com/prafful/springboot_april_2020/tree/master/008SpringBoot-ManyToMany-Relationship
