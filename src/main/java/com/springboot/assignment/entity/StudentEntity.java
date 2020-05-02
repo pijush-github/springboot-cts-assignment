@@ -44,12 +44,28 @@ public class StudentEntity {
 	private Set<CourseEntity> courses = new HashSet<>();
 	
 	
+	public void addCourse(final CourseEntity inCourseEntity) {
+        this.courses.add(inCourseEntity);
+        inCourseEntity.getStudents().add(this);
+    }
+ 
+    public void removeCourse(final CourseEntity inCourseEntity) {
+    	this.courses.remove(inCourseEntity);
+    	inCourseEntity.getStudents().remove(this);
+    }
+    
+    public void removeAllCourse() {
+    	this.courses.stream().forEach(c -> c.getStudents().remove(this));
+    	this.courses.clear();
+    }
+	
+	
 	@Override
     public int hashCode() {
     	final int PRIME = 91; int hashCode = 1;
-    	hashCode = (PRIME * hashCode) + (id == null ? 21 : id.hashCode() * hashCode);
-    	hashCode = (PRIME * hashCode) + (firstName == null ? 93 : firstName.hashCode() * hashCode);
-    	hashCode = (PRIME * hashCode) + (lastName == null ? 71 : lastName.hashCode() * hashCode);
+    	hashCode = (PRIME * hashCode) + (this.id == null ? 21 : this.id.hashCode() * hashCode);
+    	hashCode = (PRIME * hashCode) + (this.firstName == null ? 93 : this.firstName.hashCode() * hashCode);
+    	hashCode = (PRIME * hashCode) + (this.lastName == null ? 71 : this.lastName.hashCode() * hashCode);
         return hashCode;
     }
     
@@ -57,9 +73,9 @@ public class StudentEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof StudentEntity )) return false;
-        boolean idEquals = id != null && id.equals(((StudentEntity) o).getId());
-        boolean firstNameEquals = firstName != null && firstName.equals(((StudentEntity) o).getFirstName());
-        boolean lastNameEquals = lastName != null && lastName.equals(((StudentEntity) o).getLastName());
+        boolean idEquals = this.id != null && this.id.equals(((StudentEntity) o).getId());
+        boolean firstNameEquals = this.firstName != null && this.firstName.equals(((StudentEntity) o).getFirstName());
+        boolean lastNameEquals = this.lastName != null && this.lastName.equals(((StudentEntity) o).getLastName());
         return idEquals && firstNameEquals && lastNameEquals;
     }
 }

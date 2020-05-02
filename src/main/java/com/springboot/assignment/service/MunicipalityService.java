@@ -88,6 +88,11 @@ public class MunicipalityService {
 		final Optional<WaterTankEntity> savedWaterTankEntity = theMunicipalityDao.getWaterTank(Long.valueOf(child));
 		if(savedLocalityEntity.isPresent() && savedWaterTankEntity.isPresent() && savedLocalityEntity.get().getWaterTanks().contains(savedWaterTankEntity.get())) {
 			savedLocalityEntity.get().removeWaterTank(savedWaterTankEntity.get());
+			/*
+			 * Need to revisit this call as the relationship owner is locality.
+			 * theMunicipalityDao.removeWaterTank(savedLocalityEntity); can save the entity.
+			 * deletion of water tank may happen automatically
+			 */
 			theMunicipalityDao.removeWaterTank(Long.valueOf(child));
 		}
 		return theMunicipalityDao.getWaterTank(Long.valueOf(child)).isPresent();

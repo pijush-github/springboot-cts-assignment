@@ -24,8 +24,7 @@ public class StudentEntityModelConverter implements EntityModelConverter<Student
 				CourseEntity ce = new CourseEntity();
 				ce.setCourseName(m.getCourseName());
 				ce.setCourseDuration(Integer.valueOf(m.getCourseDuration()));
-				ce.getStudents().add(entity);
-				entity.getCourses().add(ce);
+				entity.addCourse(ce);
 			});
 		}
 		return entity;

@@ -6,4 +6,6 @@ import com.springboot.assignment.entity.CourseEntity;
 
 public interface CourseEntityRepository extends JpaRepository<CourseEntity, Long>{
 
+	CourseEntity findByCourseName(String courseName);
+
 }
